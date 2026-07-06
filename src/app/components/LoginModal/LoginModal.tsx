@@ -6,7 +6,7 @@ import { FcGoogle } from "react-icons/fc";
 import { FaUser } from "react-icons/fa";
 
 // Import pre-initialized auth from your firebase library file
-import { auth } from "../../../lib/firebase";
+import { auth } from "@/lib/firebase";
 
 import { GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail } from "firebase/auth";
 
