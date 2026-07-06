@@ -10,7 +10,8 @@ import { auth } from "../../../lib/firebase";
 
 import { GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail } from "firebase/auth";
 
-import { useAuth } from "@/app/context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
+
 import "./LoginModal.css";
 
 export default function LoginModal() {
