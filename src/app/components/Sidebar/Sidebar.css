@@ -1,0 +1,276 @@
+/* ===========================
+   SIDEBAR
+=========================== */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 220px;
+  height: 100vh;
+
+  background: #f7faf9;
+
+  border-right: 1px solid #e5e7eb;
+
+  display: flex;
+  flex-direction: column;
+
+  z-index: 1000;
+
+  transition: transform .3s ease;
+}
+
+
+.sidebar__link--disabled {
+  pointer-events: none; /* Prevents the click */
+  cursor: not-allowed;  /* Displays the red 'no-entry' cursor */
+  opacity: 1;           /* Keeps the link looking normal/not greyed out */
+}
+
+/* ===========================
+   LOGO
+=========================== */
+
+.sidebar__logo {
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 24px;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  flex-shrink: 0;
+}
+
+.sidebar__logo img {
+  width: 170px;
+  height: auto;
+}
+
+/* ===========================
+   NAVIGATION
+=========================== */
+
+.sidebar__nav {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px 12px;
+
+  gap: 4px;
+}
+
+.sidebar__link {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  height: 52px;
+
+  padding: 0 18px;
+
+  border-radius: 8px;
+
+  color: #032b41;
+
+  font-size: 18px;
+  font-weight: 500;
+
+  transition: .2s ease;
+}
+
+.sidebar__link svg {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+/* Active Indicator */
+
+.sidebar__link::before {
+  content: "";
+
+  position: absolute;
+
+  left: -12px;
+  top: 8px;
+
+  width: 4px;
+  height: 36px;
+
+  border-radius: 0 4px 4px 0;
+
+  background: #2bd97c;
+
+  opacity: 0;
+
+  transition: .2s;
+}
+
+.sidebar__link.active {
+  background: #e8faf2;
+}
+
+.sidebar__link.active::before {
+  opacity: 1;
+}
+
+.sidebar__link:hover {
+  background: #eef6f2;
+}
+
+/* ===========================
+   BOTTOM
+=========================== */
+
+.sidebar__bottom {
+  padding: 16px 12px 24px;
+
+  border-top: 1px solid #edf2f7;
+}
+
+.sidebar__login {
+  width: 100%;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 0 18px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #032b41;
+
+  font-size: 18px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.sidebar__login svg {
+  font-size: 22px;
+}
+
+.sidebar__login:hover {
+  background: #eef6f2;
+}
+
+/* ===========================
+   MOBILE BUTTON
+=========================== */
+
+.sidebar__toggle {
+  display: none;
+
+  position: fixed;
+
+  top: 16px;
+  left: 16px;
+
+  width: 48px;
+  height: 48px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: white;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+
+  cursor: pointer;
+
+  z-index: 1200;
+}
+
+.sidebar__toggle svg {
+  font-size: 24px;
+}
+
+/* ===========================
+   CLOSE BUTTON
+=========================== */
+
+.sidebar__close {
+  display: none;
+
+  position: absolute;
+
+  top: 18px;
+  right: 18px;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.sidebar__close svg {
+  font-size: 28px;
+}
+
+/* ===========================
+   OVERLAY
+=========================== */
+
+.sidebar__overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,.45);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: .3s;
+
+  z-index: 999;
+}
+
+.sidebar__overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 1024px) {
+
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+
+    box-shadow: 0 0 40px rgba(0,0,0,.2);
+  }
+
+  .sidebar__toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sidebar__close {
+    display: block;
+  }
+
+}

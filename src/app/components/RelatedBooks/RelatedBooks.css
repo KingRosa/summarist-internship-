@@ -1,0 +1,38 @@
+.related-books{
+    margin: 80px; 
+}
+
+.related-books__title{
+    font-size: 30px; 
+    color: #032b41; 
+    margin-bottom: 28px; 
+}
+
+.related-books__grid{
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 28px; 
+}
+
+@media (max-width: 768px) {
+    .related-books__title{
+        text-align: center; 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

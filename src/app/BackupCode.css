@@ -1,0 +1,713 @@
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.modal-content h2,
+.modal-content .login-p {
+  color: #000000;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.modal-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+
+
+.modal-content .login-p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.modal-content input{
+  display: block; 
+  width: 100%; 
+  padding: 12px; 
+  margin: 10px 0; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  box-sizing: border-box; 
+
+  color: #000000; 
+  font-size: 16px; 
+
+}
+
+.modal-content input::placeholder {
+  color: #999;
+  font-style: bold;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 360px;
+  padding: 24px;
+  border-radius: 8px;
+  background: white;
+}
+
+
+
+
+.btn {
+   background: transparent;
+  color: #032b41;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+
+
+.btn:active {
+  background-color: #e8eaed;
+}
+
+.btn:focus-visible {
+  outline: 2px solid #2bd284;
+  outline-offset: 2px;
+}
+
+
+
+.submit-btn {
+   width: 100%;
+  padding: 12px;
+  margin-top: 16px;
+  background-color: #2bd284;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+
+/* The Social Buttons Google/Guest 
+
+*/
+
+
+.login-social-btn{
+ display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 4px;
+  border: none; /* No border for a flat look */
+  background-color: #043a74;
+  /* Your base blue */
+  color: #ffffff;           /* White text */
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.google-social-btn{
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 4px;
+  border: none; 
+  background-color: #2172ca;
+  /* Your base blue */
+  color: #ffffff;           /* White text */
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+
+
+.login-social-btn:hover {
+background-color: #0056b3; 
+}
+
+.google-social-btn:hover{
+  background-color: #1065be;
+}
+
+
+.header {
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+
+  display: flex;
+  justify-content: center;
+}
+
+.header .container {
+  width: 100%;
+  max-width: 1280px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 24px;
+  gap: 16px;
+}
+
+/* LOGO */
+.header__logo img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+
+
+/* NAV WRAPPER */
+.header__nav {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+  flex: 1;
+
+  justify-content: flex-end;
+}
+
+/* DESKTOP LINKS */
+.header__links {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  /* IMPORTANT: prevents squishing */
+  flex-wrap: nowrap;
+}
+
+/* LINK STYLE */
+.header__link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  text-decoration: none;
+
+  padding: 8px 12px;
+  border-radius: 8px;
+
+  white-space: nowrap;
+
+  transition: all 0.2s ease;
+}
+
+.header__link:hover {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+/* LOGIN BUTTON */
+.header__login {
+  background: #2bd284;
+  color: white;
+  border: none;
+
+  padding: 8px 14px;
+  border-radius: 8px;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  white-space: nowrap;
+}
+
+.header__login:hover {
+  background: #22c55e;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  font-size: 22px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* =========================
+   RESPONSIVE FIX
+========================= */
+
+@media (max-width: 900px) {
+  .header__links {
+    display: none; /* hide nav links on tablet/mobile */
+  }
+
+  .header__login {
+    display: none; /* optional: cleaner mobile UI */
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  .header .container {
+    padding: 12px 16px;
+  }
+
+  .header__logo img {
+    height: 24px;
+  }
+}
+
+
+/*  SOCIAL SECTION AND HEADER SECTION COMPLETED */
+
+
+
+
+
+/*  HOME HERO SECTION 
+
+*/
+
+.home-hero{
+  padding: 80px 20px; 
+  background-color: #f7f9fc; 
+  text-align: center; 
+}
+
+.home-hero__content h1{
+  font-size: 48px; 
+  margin-bottom: 20px; 
+  color: #1a1a1a; 
+
+}
+
+.home-hero__subtitle{
+  font-size: 20px; 
+  color: #555; 
+  margin-bottom: 30px; 
+  max-width: 600px; 
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+.home-hero__login-btn{
+  padding: 15px 40px; 
+  background-color: #2bd284; 
+  color: white; 
+  border: none; 
+  border-radius: 4px; 
+  font-size: 18px; 
+
+  cursor: pointer; 
+  font-weight: bold; 
+}
+
+
+.forgot__password{
+  text-decoration: none; 
+  color: #3c61e8; 
+    background-color: transparent; 
+
+  text-align: center; 
+  cursor: pointer; 
+
+}
+
+.forgot__password:hover{
+  border: none; 
+  color: #4c60a8
+}
+
+.create__account-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create__account {
+  display: block;
+  width: 100%;
+  max-width: 280px;       /* Adjust to match your modal width */
+  margin: 16px auto 0;
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.create__account:hover {
+  background-color: #f1f1f1;
+}
+
+/* ==========================
+  REGULAR BOOK LIST
+========================== */
+
+.books {
+  padding: 48px 0;
+}
+
+.books .container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Header */
+
+.books__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.books__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #032b41;
+}
+
+/* Arrow Button */
+
+.books__arrow {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: #f1f3f4;
+  color: #032b41;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.books__arrow:hover {
+  background: #e5e7eb;
+}
+
+/* Horizontal Book Row */
+
+.books__list {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  padding-bottom: 10px;
+}
+
+
+.books__list::-webkit-scrollbar {
+  display: none;
+}
+
+.books__list {
+  scrollbar-width: none;
+}
+
+/* ==========================
+   BOOK CARD
+========================== */
+
+.book-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  width: 160px;
+
+  scroll-snap-align: start;
+  flex: 0 0 180px;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Cover */
+
+.book-card__img {
+  width: 172px;
+  height: 258px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
+
+
+/* Title */
+
+.book-card__title {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #032b41;
+}
+
+/* Author */
+
+.book-card__author {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Subtitle */
+
+.book-card__subtitle {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.4;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Footer */
+
+.book-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.book-card__rating,
+.book-card__duration {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+
+
+.book-card__ratings {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+/* Icons */
+
+.star-icon {
+  color: grey;
+  font-size: 14px;
+}
+
+.star-icon:hover{
+  color: #f6c344;
+}
+
+.clock-icon {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+
+/* REGULAR BOOK SECTION COMPLETED */
+
+
+
+
+
+/* SELECTED BOOK SECTION 
+
+*/
+
+.selected-book__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+  margin-bottom: 16px;
+}
+
+.selected-book__card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 220px;
+  background: #ffff97;
+  border-left: 6px solid #2b7fff;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color .25s ease;
+}
+
+
+.book-skeleton {
+  height: 260px;
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    #e5e7eb 25%,
+    #f3f4f6 50%,
+    #e5e7eb 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite linear;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+
+
+
+
+
+
+
+
+
+.selected-book__image {
+  width: 150px;
+  height: 220px;
+  object-fit: cover;
+}
+
+.selected-book__content {
+  flex: 1;
+  padding: 28px;
+}
+
+.selected-book__title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #032b41;
+  margin-bottom: 10px;
+}
+
+.selected-book__book-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #032b41;
+  margin-bottom: 6px;
+}
+
+.selected-book__author {
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+.selected-book__duration {
+  font-weight: 600;
+  color: #032b41;
+}
+
+
+
+
+
+
+
+
+
+/* FEATURES 
+
+
+*/
+
+.features{
+  padding: 80px 0; 
+  background-color: #f9f9f9; 
+}
+
+.features__title{
+  text-align: center; 
+  margin-bottom: 50px; 
+  font-size: 2rem; 
+}
+
+
+.feature-grid{
+ display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 30px; 
+  padding: 0 20px; 
+}
+
+.feature-card{
+  padding: 30px; 
+  background: transparent; 
+  border-radius: 12px; 
+  text-align: center; 
+  transition: transform 0.3s ease; 
+}
+
+
+
+
+.feature-card__icon{
+  font-size: 2.5rem;
+  color: black;
+  margin-bottom: 20px; 
+}
+
+
+.book-skeleton {
+  width: 180px;
+  height: 320px;
+  border-radius: 8px;
+  background: linear-gradient(
+    90deg,
+    #e5e7eb 25%,
+    #f3f4f6 50%,
+    #e5e7eb 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

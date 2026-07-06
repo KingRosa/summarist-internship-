@@ -1,0 +1,349 @@
+/* ===========================
+   OVERLAY
+=========================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.55);
+
+  z-index: 9999;
+}
+
+/* ===========================
+   MODAL
+=========================== */
+
+.modal-content {
+  width: 100%;
+  max-width: 420px;
+
+  background: white;
+
+  border-radius: 12px;
+
+  padding: 36px;
+
+  position: relative;
+
+  animation: modalFade .25s ease;
+}
+
+/* ===========================
+   ANIMATION
+=========================== */
+
+@keyframes modalFade {
+
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+/* ===========================
+   CLOSE BUTTON
+=========================== */
+
+.modal-close {
+  position: absolute;
+
+  top: 16px;
+  right: 16px;
+
+  width: 36px;
+  height: 36px;
+
+  border: none;
+
+  background: transparent;
+
+  font-size: 20px;
+
+  cursor: pointer;
+
+  color: #032b41;
+}
+
+/* ===========================
+   TITLE
+=========================== */
+
+.modal-content h2 {
+  text-align: center;
+
+  color: #032b41;
+
+  margin-bottom: 28px;
+
+  font-size: 28px;
+}
+
+/* ===========================
+   SOCIAL BUTTONS
+=========================== */
+
+.login-social-btn{
+    width: 100%;
+  height: 50px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+    color: white; 
+  background: #2067ad;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .2s;
+
+  margin-bottom: 16px;
+}
+
+
+
+
+.google-social-btn {
+  width: 100%;
+  height: 50px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+
+  background: #2874c0;
+    color: white; 
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .2s;
+
+  margin-bottom: 16px;
+}
+
+.login-social-btn:hover,
+.google-social-btn:hover {
+  background: #2067ad;
+}
+
+/* ===========================
+   DIVIDER
+=========================== */
+
+.modal-divider {
+  display: flex;
+  align-items: center;
+
+  margin: 28px 0;
+}
+
+.modal-divider::before,
+.modal-divider::after {
+  content: "";
+
+  flex: 1;
+
+  height: 1px;
+
+  background: #e5e7eb;
+}
+
+.modal-divider span {
+  margin: 0 16px;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+/* ===========================
+   FORM
+=========================== */
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+form input {
+  width: 100%;
+  height: 50px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 8px;
+
+  padding: 0 16px;
+
+  font-size: 15px;
+}
+
+form input:focus {
+  outline: none;
+
+  border-color: #2bd97c;
+}
+
+/* ===========================
+   LOGIN BUTTON
+=========================== */
+
+.submit-btn {
+  width: 100%;
+  height: 50px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #2bd97c;
+
+  color: #032b41;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.submit-btn:hover {
+  background: #24c46f;
+}
+
+/* ===========================
+   FOOTER LINKS
+=========================== */
+
+.modal-footer {
+  margin-top: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 16px;
+}
+
+.forgot-password {
+  background: transparent;
+  border: none;
+
+  color: #116be9;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.forgot-password:hover {
+  color: #0a58ca;
+}
+
+.create-account {
+  background: transparent;
+  border: none;
+
+  color: #6b7280;
+
+  font-size: 15px;
+cursor: pointer;
+
+}
+
+.create-account span {
+  color: #116be9;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  margin-left: 4px;
+  transition: color 0.2s ease;
+}
+
+.create-account span:hover {
+  color: #0a58ca;
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media (max-width: 480px) {
+
+  .modal-content {
+    margin: 20px;
+    padding: 28px 22px;
+  }
+
+  .modal-content h2 {
+    font-size: 24px;
+  }
+
+}
+
+
+.auth-error {
+  color: #dc2626;
+  font-size: 14px;
+  margin-top: -4px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.switch-auth {
+  color: #6b7280;
+  font-size: 14px;
+  text-align: center;
+}
+
+.switch-auth button {
+  margin-left: 6px;
+
+  background: transparent;
+  border: none;
+
+  color: #0365f2;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.switch-auth button:hover {
+  text-decoration: underline;
+}

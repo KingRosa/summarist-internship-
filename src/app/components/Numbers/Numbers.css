@@ -1,0 +1,87 @@
+/*  NUMBERS SECTION */
+
+#numbers{
+    padding: 80px 0; 
+}
+
+.numbers{
+    background: #d7e9ff; 
+    border-radius: 16px; 
+    padding: 48px 40px; 
+    text-align: center; 
+}
+
+.numbers__wrapper{
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px; 
+    margin-top: 32px; 
+
+
+}
+
+.numbers__card{
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.numbers__icon{
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+
+    gap: 6px; 
+    margin-bottom: 20px; 
+    color: #0564f1; 
+}
+
+.numbers__icon svg{
+    width: 48px; 
+    height: 48px; 
+}
+
+.numbers__star--icon svg{
+    width: 22px; 
+    height: 22px; 
+}
+
+.numbers__title{
+    font-size: 42px; 
+    font-weight: 700; 
+    color: #032b41; 
+
+    margin-bottom: 12px; 
+}
+
+
+.numbers__sub--title{
+    color: #394547; 
+    font-size: 18px; 
+    font-weight: 300; 
+    line-height: 1.6; 
+}
+
+/*  RESPONSIVE SECTION 
+
+
+*/
+
+@media(max-width: 768px) {
+    .numbers{
+        padding: 40px 24px; 
+    }
+
+    .numbers__wrapper{
+        grid-template-columns: 1fr;
+        gap: 36px
+    }
+
+    .numbers__title{
+        font-size: 34px; 
+    }
+
+    .numbers__sub--title{
+        font-size: 16px; 
+    }
+}

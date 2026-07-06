@@ -1,0 +1,58 @@
+.help {
+  padding: 40px 0;
+}
+
+.help__card {
+  padding: 30px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background-color: #ffffff;
+  margin-top: 20px;
+}
+
+.help__faq-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0 0;
+}
+
+.help__faq-item {
+  margin-bottom: 24px;
+  border-bottom: 1px solid #f3f4f6;
+  padding-bottom: 16px;
+}
+
+.help__faq-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.help__faq-question {
+  font-size: 1.1rem;
+  color: #1f2937;
+  margin-bottom: 8px;
+}
+
+.help__faq-answer {
+  color: #4b5563;
+  line-height: 1.5;
+  margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

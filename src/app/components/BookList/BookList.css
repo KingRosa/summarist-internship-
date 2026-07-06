@@ -1,0 +1,61 @@
+.book-list {
+  width: 100%;
+}
+
+.book-list__header {
+  margin-bottom: 20px;
+}
+
+.book-list__title {
+  color: #032b41;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.book-list__row {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+
+  scrollbar-width: none;
+}
+
+.book-list__row::-webkit-scrollbar {
+  display: none;
+}
+
+.book-list__row::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .book-list {
+    padding: 24px;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
