@@ -86,7 +86,14 @@ export default function BookDetails({
       return;
     }
 
-    addBook(book);
+    // FIX: Construct a new object that includes duration
+    // to satisfy the LibraryBook type requirement
+    const bookToSave = {
+      ...book,
+      duration: duration,
+    };
+
+    addBook(bookToSave);
 
     setIsBookSaved(true);
   }
@@ -94,11 +101,8 @@ export default function BookDetails({
   return (
     <section className="book-details">
       <div className="book-details__container">
-
         {/* LEFT */}
-
         <aside className="book-details__left">
-
           <Image
             src={book.imageLink}
             alt={book.title}
@@ -113,13 +117,10 @@ export default function BookDetails({
               PREMIUM
             </div>
           )}
-
         </aside>
 
         {/* RIGHT */}
-
         <div className="book-details__right">
-
           <p className="book-details__type">
             {book.type}
           </p>
@@ -137,9 +138,7 @@ export default function BookDetails({
           </p>
 
           {/* STATS */}
-
           <div className="book-details__stats">
-
             <div className="book-details__stat">
               <FaStar />
               <span>
@@ -169,13 +168,10 @@ export default function BookDetails({
                 {book.keyIdeas} Key Ideas
               </span>
             </div>
-
           </div>
 
           {/* BUTTONS */}
-
           <div className="book-details__buttons">
-
             <button
               className="book-details__btn"
               onClick={handleRead}
@@ -193,105 +189,60 @@ export default function BookDetails({
                 <span>Listen</span>
               </button>
             )}
-
           </div>
 
           {/* BOOKMARK */}
-
           <button
-  className="book-details__bookmark"
-  onClick={handleBookmark}
->
-  <FaBookmark />
-
-  <span>
-    {isBookSaved
-      ? "Saved to My Library"
-      : "Add to My Library"}
-  </span>
-</button>
+            className="book-details__bookmark"
+            onClick={handleBookmark}
+          >
+            <FaBookmark />
+            <span>
+              {isBookSaved
+                ? "Saved to My Library"
+                : "Add to My Library"}
+            </span>
+          </button>
 
           {/* SUMMARY */}
-
           <section className="book-details__section">
-
             <h3>Summary</h3>
-
-            <p>
-              {book.summary}
-            </p>
-
+            <p>{book.summary}</p>
           </section>
 
           {/* ABOUT */}
-
           <section className="book-details__section">
-
             <h3>What's it about?</h3>
-
-            <p>
-              {book.bookDescription}
-            </p>
-
+            <p>{book.bookDescription}</p>
           </section>
 
           {/* AUTHOR */}
-
           <section className="book-details__section">
-
             <h3>About the Author</h3>
-
-            <p>
-              {book.authorDescription}
-            </p>
-
+            <p>{book.authorDescription}</p>
           </section>
 
           {/* TAGS */}
-
           {book.tags.length > 0 && (
-
             <section className="book-details__section">
-
               <h3>Tags</h3>
-
               <div className="book-details__tags">
-
                 {book.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="book-details__tag"
-                  >
+                  <span key={tag} className="book-details__tag">
                     {tag}
                   </span>
                 ))}
-
               </div>
-
             </section>
-
           )}
-
         </div>
-
       </div>
 
       {/* RELATED BOOKS */}
-
       <div className="book-details__related">
-
-        <BookList
-          title="Recommended For You"
-          status="recommended"
-        />
-
-        <BookList
-          title="Suggested Books"
-          status="suggested"
-        />
-
+        <BookList title="Recommended For You" status="recommended" />
+        <BookList title="Suggested Books" status="suggested" />
       </div>
-
     </section>
   );
 }
