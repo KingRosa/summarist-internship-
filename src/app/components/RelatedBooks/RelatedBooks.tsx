@@ -53,7 +53,6 @@ export default function RelatedBooks({
     return (
       <section className="related-books">
         <h2>Recommended Books</h2>
-
         <p>Loading...</p>
       </section>
     );
@@ -61,31 +60,33 @@ export default function RelatedBooks({
 
   return (
     <section className="related-books">
-
       <h2 className="related-books__title">
         Recommended Books
       </h2>
 
       <div className="related-books__grid">
-
         {books.map((book) => (
-          <BookCard
-                key={book.id}
-                id={book.id}
-                image={book.imageLink}
-                title={book.title}
-                author={book.author}
-                subtitle={book.subTitle}
-                rating={book.averageRating}
-                duration={book.duration} totalRating={0}          />
+    <BookCard
+  key={book.id}
+  id={book.id}
+  imageLink={book.imageLink}
+  title={book.title}
+  author={book.author}
+  subTitle={book.subTitle}
+  averageRating={book.averageRating}
+  totalRating={0}
+  audioLink={""} // Ensure this is present
+  subscriptionRequired={false}
+  keyIdeas={0}
+  type={""}
+  status="recommended"
+  // duration={book.duration} <-- Ensure this line is GONE
+/>
         ))}
-
       </div>
-
     </section>
   );
 }
-
 
 
 

@@ -212,7 +212,7 @@ export default function BookDetails({
 
           {/* ABOUT */}
           <section className="book-details__section">
-            <h3>What's it about?</h3>
+            <h3>What&apos;s it about?</h3>
             <p>{book.bookDescription}</p>
           </section>
 
