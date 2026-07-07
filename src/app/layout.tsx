@@ -1,56 +1,41 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-
-import "./globals.css";
-
+// app/layout.tsx
+"use client"; // Required to use context hooks
 import Header from "./components/Header/Header";
-import Sidebar from "./components/Sidebar/Sidebar";
 import Footer from "./components/Footer/Footer";
+import Sidebar from "./components/Sidebar/Sidebar";
 import LoginModal from "./components/LoginModal/LoginModal";
+import "./globals.css"
 
-import AuthProvider from "./context/AuthContext";
 
-const geistSans = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist-sans",
-});
+import AuthProvider, { useAuth } from "./context/AuthContext";// ... other imports
 
-const geistMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-geist-mono",
-});
+function AppContent({ children }: { children: React.ReactNode }) {
+  const { isLoggedIn } = useAuth();
 
-export const metadata: Metadata = {
-  title: "Summarist",
-  description: "Book Summary App",
-};
+  return (
+    <div className={`app-shell ${isLoggedIn ? "logged-in" : ""}`}>
+      {/* Conditionally render the Sidebar */}
+      {isLoggedIn && <Sidebar />}
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+      <div className="app-main">
+        <Header />
+        <main className="app-content">
+          {children}
+        </main>
+        <Footer />
+      </div>
+
+      <LoginModal />
+    </div>
+  );
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable}`}
-      >
+      <body>
         <AuthProvider>
-          <div className="app-shell">
-            <Sidebar />
-
-            <div className="app-main">
-              <Header />
-
-              <main className="app-content">
-                {children}
-              </main>
-
-              <Footer />
-            </div>
-
-            <LoginModal />
-          </div>
+          <AppContent>{children}</AppContent>
         </AuthProvider>
       </body>
     </html>

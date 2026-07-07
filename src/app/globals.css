@@ -83,6 +83,25 @@ button {
   min-height: calc(100vh - 80px);
 }
 
+
+
+.app-main {
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+}
+
+/* When the logged-in class is present, add the margin */
+.app-shell.logged-in .app-main {
+  margin-left: 220px;
+}
+
+/* Mobile: Ensure no margin on small screens even if logged in */
+@media (max-width: 1024px) {
+  .app-shell.logged-in .app-main {
+    margin-left: 0;
+  }
+}
+
 @media (max-width: 1024px) {
   .app-content {
     margin-left: 0;

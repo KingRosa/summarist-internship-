@@ -13,7 +13,6 @@ import {
   HiOutlineQuestionMarkCircle,
   HiOutlineMenu,
   HiOutlineX,
-  HiOutlineLogin,
   HiOutlineLogout,
 } from "react-icons/hi";
 
@@ -27,9 +26,18 @@ import "./Sidebar.css";
 
 export default function Sidebar() {
   const pathname = usePathname();
-  const { openLogin, isLoggedIn, logout } = useAuth();
+
+  const {
+    isLoggedIn,
+    logout,
+  } = useAuth();
 
   const [open, setOpen] = useState(false);
+
+  // Hide the entire sidebar until the user logs in.
+  if (!isLoggedIn) {
+    return null;
+  }
 
   const links = [
     {
@@ -53,10 +61,10 @@ export default function Sidebar() {
       icon: <HiOutlineSearch />,
     },
     {
-  href: "/settings", // Change "/Settings" to "/settings"
-  label: "Settings",
-  icon: <HiOutlineCog />,
-},
+      href: "/settings",
+      label: "Settings",
+      icon: <HiOutlineCog />,
+    },
     {
       href: "/help",
       label: "Help & Support",
@@ -100,7 +108,9 @@ export default function Sidebar() {
 
         <nav className="sidebar__nav">
           {links.map((link) => {
-            const isDisabled = link.href === "/search" || link.href === "/highlights";
+            const isDisabled =
+              link.href === "/search" ||
+              link.href === "/highlights";
 
             return (
               <Link
@@ -108,7 +118,11 @@ export default function Sidebar() {
                 href={isDisabled ? "#" : link.href}
                 className={`sidebar__link ${
                   pathname === link.href ? "active" : ""
-                } ${isDisabled ? "sidebar__link--disabled" : ""}`}
+                } ${
+                  isDisabled
+                    ? "sidebar__link--disabled"
+                    : ""
+                }`}
                 onClick={(e) => {
                   if (isDisabled) {
                     e.preventDefault();
@@ -125,29 +139,16 @@ export default function Sidebar() {
         </nav>
 
         <div className="sidebar__bottom">
-          {isLoggedIn ? (
-            <button
-              className="sidebar__login"
-              onClick={() => {
-                logout();
-                setOpen(false);
-              }}
-            >
-              <HiOutlineLogout />
-              <span>Logout</span>
-            </button>
-          ) : (
-            <button
-              className="sidebar__login"
-              onClick={() => {
-                openLogin();
-                setOpen(false);
-              }}
-            >
-              <HiOutlineLogin />
-              <span>Login</span>
-            </button>
-          )}
+          <button
+            className="sidebar__login"
+            onClick={() => {
+              logout();
+              setOpen(false);
+            }}
+          >
+            <HiOutlineLogout />
+            <span>Logout</span>
+          </button>
         </div>
       </aside>
     </>
