@@ -7,7 +7,6 @@ interface AudioPlayerProps {
   isPlaying: boolean;
   currentTime: number;
   playbackRate: number;
-
   onDurationChange: (duration: number) => void;
   onTimeUpdate: (time: number) => void;
 }
@@ -22,43 +21,39 @@ export default function AudioPlayer({
 }: AudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  /* ===========================
-     PLAY / PAUSE
-  =========================== */
-
+  // 1. Handle Play/Pause with safety check
   useEffect(() => {
-    if (!audioRef.current) return;
+    const audio = audioRef.current;
+    if (!audio) return;
 
     if (isPlaying) {
-      audioRef.current.play().catch(() => {});
+      audio.play().catch((err) => console.warn("Autoplay blocked:", err));
     } else {
-      audioRef.current.pause();
+      audio.pause();
     }
   }, [isPlaying]);
 
-  /* ===========================
-     SEEK
-  =========================== */
-
+  // 2. Seek control
   useEffect(() => {
-    if (!audioRef.current) return;
-
-    if (
-      Math.abs(audioRef.current.currentTime - currentTime) > 1
-    ) {
-      audioRef.current.currentTime = currentTime;
+    const audio = audioRef.current;
+    if (audio && Math.abs(audio.currentTime - currentTime) > 1) {
+      audio.currentTime = currentTime;
     }
   }, [currentTime]);
 
-  /* ===========================
-     PLAYBACK SPEED
-  =========================== */
-
+  // 3. Playback speed
   useEffect(() => {
-    if (!audioRef.current) return;
-
-    audioRef.current.playbackRate = playbackRate;
+    if (audioRef.current) {
+      audioRef.current.playbackRate = playbackRate;
+    }
   }, [playbackRate]);
+
+  // 4. Ensure component resets if link changes
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.load();
+    }
+  }, [audioLink]);
 
   return (
     <audio
@@ -66,14 +61,10 @@ export default function AudioPlayer({
       src={audioLink}
       preload="metadata"
       onLoadedMetadata={() =>
-        onDurationChange(
-          audioRef.current?.duration ?? 0
-        )
+        onDurationChange(audioRef.current?.duration ?? 0)
       }
       onTimeUpdate={() =>
-        onTimeUpdate(
-          audioRef.current?.currentTime ?? 0
-        )
+        onTimeUpdate(audioRef.current?.currentTime ?? 0)
       }
     />
   );

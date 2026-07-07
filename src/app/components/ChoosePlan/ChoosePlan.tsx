@@ -2,102 +2,74 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-
 import BillingToggle from "./BillingToggle";
 import PlanCard from "./PlanCard";
 import FeatureComparison from "./FeatureComparison";
-
 import "./ChoosePlan.css";
-
-export default function ChoosePlan() {
+import { useAuth } from "../../context/AuthContext"; // Ensure path is correct
+export default function ChoosePlan({ bookId }: { bookId?: string }) {
   const router = useRouter();
+  const { activateSubscription } = useAuth(); // 1. Access the function
+  const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
+  const [selectedPlan, setSelectedPlan] = useState<"basic" | "premium">("premium");
 
-  const [billing, setBilling] = useState<"monthly" | "yearly">(
-    "monthly"
+ function handleContinue() {
+  activateSubscription();
+
+  const pendingBook = localStorage.getItem(
+    "summarist-pending-book"
   );
 
-  const [selectedPlan, setSelectedPlan] = useState<
-    "basic" | "premium"
-  >("premium");
+  if (pendingBook) {
+    localStorage.removeItem(
+      "summarist-pending-book"
+    );
 
-  function handleContinue() {
-    // Stripe checkout will go here later
-    router.push("/for-you");
+    router.push(`/player/${pendingBook}`);
+
+    return;
   }
 
-  const basicPrice =
-    billing === "monthly" ? "$7.99" : "$79.99";
+  router.push("/for-you");
+}
 
-  const premiumPrice =
-    billing === "monthly" ? "$12.99" : "$129.99";
+  const basicPrice = billing === "monthly" ? "$7.99" : "$79.99";
+  const premiumPrice = billing === "monthly" ? "$12.99" : "$129.99";
 
   return (
     <section className="choose-plan">
-
       <div className="choose-plan__container">
-
-        <h1 className="choose-plan__title">
-          Choose Your Plan
-        </h1>
-
-        <p className="choose-plan__subtitle">
-          Start listening and reading in less than a minute.
-          Cancel anytime.
-        </p>
-
-        <BillingToggle
-          billing={billing}
-          setBilling={setBilling}
-        />
-
+        <h1 className="choose-plan__title">Choose Your Plan</h1>
+        <BillingToggle billing={billing} setBilling={setBilling} />
+        
         <div className="choose-plan__plans">
-
-          <PlanCard
-            title="Basic"
-            price={basicPrice}
-            billing={billing}
-            active={selectedPlan === "basic"}
-            onClick={() =>
-              setSelectedPlan("basic")
-            }
-            features={[
-              "Unlimited Reading",
-              "Text Summaries",
-              "Mobile Access",
-            ]}
+          <PlanCard 
+            title="Basic" 
+            price={basicPrice} 
+            billing={billing} 
+            active={selectedPlan === "basic"} 
+            onClick={() => setSelectedPlan("basic")} 
+            // Ensure features is passed as an empty array if not defined
+            features={["Unlimited Reading", "Text Summaries", "Mobile Access"]} 
           />
-
-          <PlanCard
-            title="Premium"
-            badge="MOST POPULAR"
-            price={premiumPrice}
-            billing={billing}
-            active={selectedPlan === "premium"}
-            onClick={() =>
-              setSelectedPlan("premium")
-            }
-            features={[
-              "Unlimited Reading",
-              "Unlimited Listening",
-              "Offline Audio",
-              "New Releases",
-              "Priority Access",
-            ]}
+          
+          <PlanCard 
+            title="Premium" 
+            badge="MOST POPULAR" 
+            price={premiumPrice} 
+            billing={billing} 
+            active={selectedPlan === "premium"} 
+            onClick={() => setSelectedPlan("premium")} 
+            features={["Unlimited Reading", "Unlimited Listening", "Offline Audio", "New Releases", "Priority Access"]} 
           />
-
         </div>
 
         <FeatureComparison />
-
-        <button
-          className="continue-btn"
-          onClick={handleContinue}
-        >
+        
+        <button className="continue-btn" onClick={handleContinue}>
           Continue to Checkout →
         </button>
-
       </div>
-
     </section>
   );
 }

@@ -11,8 +11,7 @@ import "./Library.css";
 
 export default function LibraryPage() {
   // 1. Updated to use deleteBook
-  const { books, deleteBook } = useLibrary();
-
+const { books, removeBook } = useLibrary();
   return (
     <section className="library">
       <div className="container">
@@ -31,11 +30,13 @@ export default function LibraryPage() {
             <h2>No books saved yet</h2>
 
             <p>
-              <img
-                src={LibraryLogo}
-                alt="LibraryLogo"
-                className="library-logo"
-              />
+          <Image
+  src={LibraryLogo}
+  alt="LibraryLogo"
+  className="library-logo"
+  width={200} // Add appropriate dimensions
+  height={200} 
+/>
             </p>
 
             <Link href="/for-you" className="library__browse-btn">
@@ -84,7 +85,7 @@ export default function LibraryPage() {
                     {/* 2. Updated to call deleteBook */}
                     <button
                       className="library__remove-btn"
-                      onClick={() => deleteBook(book.id)}
+                      onClick={() => removeBook(book.id)}
                     >
                       Remove
                     </button>

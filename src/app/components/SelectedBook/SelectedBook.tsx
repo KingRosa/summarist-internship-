@@ -109,21 +109,25 @@ export default function SelectedBook() {
   }
 
   function handleListen() {
-    if (!book) return;
+  if (!book) return;
 
-    if (!isLoggedIn) {
-      openLogin();
-      return;
-    }
-
-    if (book.subscriptionRequired) {
-      router.push("/choose-plan");
-      return;
-    }
-
-    router.push(`/player/${book.id}`);
+  if (!isLoggedIn) {
+    openLogin();
+    return;
   }
 
+  if (book.subscriptionRequired) {
+    localStorage.setItem(
+      "summarist-pending-book",
+      book.id
+    );
+
+    router.push("/choose-plan");
+    return;
+  }
+
+  router.push(`/player/${book.id}`);
+}
   if (loading) {
     return <SelectedBookSkeleton />;
   }
