@@ -413,12 +413,13 @@
 */
 
 @media(max-width: 1100px) {
-    .player__container{
-        grid-template-columns: 1ft; 
+  .player__container {
+        grid-template-columns: 1fr; /* Corrected to 1fr */
     }
 
-    .player__sidebar{
-        position: static; 
+    .player__sidebar {
+        position: static;
+        margin-bottom: 32px; /* Add some space between sidebar and content */
     }
 }
 
@@ -544,5 +545,17 @@ font-size:24px;
 
     .player__speed{
         gap: 8px; 
+    }
+}
+
+
+@media (max-width: 480px) {
+    .player__sidebar {
+        padding: 16px; /* Reduce padding on small phones */
+    }
+    
+    .player__cover {
+        max-width: 200px; /* Make cover smaller on phones to save space */
+        margin: 0 auto 12px;
     }
 }

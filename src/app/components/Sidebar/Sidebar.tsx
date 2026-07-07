@@ -41,7 +41,7 @@ export default function Sidebar() {
 
   const links = [
     {
-      href: "/",
+      href: "/for-you",
       label: "For You",
       icon: <HiOutlineHome />,
     },

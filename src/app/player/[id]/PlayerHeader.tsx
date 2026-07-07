@@ -26,13 +26,19 @@ export default function PlayerHeader({
     <aside className="player__sidebar">
 
       <Image
-        src={imageLink}
-        alt={title}
-        width={300}
-        height={450}
-        className="player__cover"
-        priority
-      />
+  src={imageLink}
+  alt={title}
+  width={300}
+  height={450}
+  className="player__cover"
+  priority
+  // Add these styles to ensure the image behaves on mobile
+  style={{
+    width: "100%",
+    height: "auto",
+    maxWidth: "300px" // Keeps it at 300px on desktop but allows it to shrink on mobile
+  }}
+/>
 
       <h1 className="player__title">
         {title}
